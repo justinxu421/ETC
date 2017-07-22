@@ -9,6 +9,7 @@ public class Bot03{
 	private static int version = 0;
 	private static volatile int id = 0;
 	private static volatile int fillcount = 0;
+	private static volatile int profits = 0;
 	private static int BOND_FAIR_PRICE = 1000;
 	public static void main(String[]args) throws Exception{
 		if(args.length == 2)
@@ -36,8 +37,25 @@ public class Bot03{
 							if(info[0].equals("FILL"))
 							{
 								fillcount++;
+								if(info[3] == "SELL") {
+									int profit = Integer.parseInt(info[4]) - 1000;
+									int count = Integer.parseInt(info[5]);
+									profits += profit*count;
+									System.out.println(profits);
+								}
+								else if(info[3] == "BUY") {
+									int profit = 1000 - Integer.parseInt(info[4]);
+									int count = Integer.parseInt(info[5]);
+									profits += profit*count;
+									System.out.println(profits);
+								}
 								System.out.println(line);
 							}
+							else if (info[0].equals("BOOK") && info[1].equals("NOKFH")) {
+								
+							
+							}
+
 							else if (info[0].equals("BOOK") && info[1].equals("BOND")) {
 								boolean selling = false;
 								for(int i = 3; i<info.length; i++) {
