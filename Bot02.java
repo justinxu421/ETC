@@ -1,0 +1,64 @@
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class Bot02{
+	private static String host="10.0.187.59";
+	private static Socket connection;
+	private static int port=20000;
+	private static int version = 0;
+	private static int id = 0;
+	private static volatile boolean restart = false;
+	public static void main(String[]args) throws Exception{
+		if(args.length == 2)
+			host = "1.1.1.1";
+		if(args.length >= 1)
+			version = Integer.parseInt(args[1]);
+		while(true)
+			connect();
+	}
+	public static void connect() throws Exception{
+		connection = new Socket(InetAddress.getByName(host), port + version);
+		System.out.println("Socket created\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		final PrintStream output = new PrintStream(connection.getOutputStream());
+		output.println("HELLO BAYKARP");
+		final BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+		Thread t=new Thread(new Runnable(){
+			public void run()
+			{
+				while(true)
+				{
+						try {
+							String line = input.readLine();
+							if(line == null) {
+								restart = true;
+								return;
+							}
+							System.out.println(line);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				}
+			}
+		});
+		t.start();
+		while(true)
+		{
+			output.println("ADD " + id + " BOND BUY 999 1");
+			Thread.sleep(1000);
+			id++;
+			output.println("ADD " + id + " BOND SELL 1001 1");
+			id++;
+			Thread.sleep(1000);
+			if(restart)
+			{
+				output.close();
+				input.close();
+				connection.close();
+				restart = true;
+				return;
+			}
+		}
+	}
+}	
