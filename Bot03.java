@@ -33,11 +33,21 @@ public class Bot03{
 							}
 							String[] info = line.split(" ");
 							if(info[0].equals("FILL"))
+							{
 								fillcount++;
-							else if (info[0].equals("BOOK") && info[1].equals("BOND")) {
-								
+								System.out.println(line);
 							}
-							System.out.println(line);
+							else if (info[0].equals("BOOK") && info[1].equals("BOND")) {
+								boolean selling = false;
+								for(int i = 3; i<info.length; i++) {
+									if(info[i].equals("SELL"))
+										selling = true;
+									else if (!selling){
+										
+									}
+								}
+							}
+							//System.out.println(line);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
