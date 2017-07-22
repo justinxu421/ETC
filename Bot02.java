@@ -17,6 +17,7 @@ public class Bot02{
 		while(true) {
 			try{
 			connect();
+			Thread.sleep(10000);
 			} catch (Exception e)
 			{
 				System.out.println(e);
