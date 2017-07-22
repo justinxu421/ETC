@@ -17,7 +17,7 @@ public class Bot03{
 			version = Integer.parseInt(args[1]);
 		connection = new Socket(InetAddress.getByName(host), port + version);
 		System.out.println("Socket created");
-		PrintStream output = new PrintStream(connection.getOutputStream());
+		final PrintStream output = new PrintStream(connection.getOutputStream());
 		output.println("HELLO BAYKARP");
 		final BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		Thread t=new Thread(new Runnable(){
