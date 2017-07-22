@@ -31,9 +31,11 @@ public class Bot01{
 		while(true)
 		{
 			output.println("ADD " + id + " BOND BUY 999 1");
+			Thread.sleep(1000);
 			id++;
 			output.println("ADD " + id + " BOND SELL 1001 1");
 			id++;
+			Thread.sleep(1000);
 		}
 	}
 }	
