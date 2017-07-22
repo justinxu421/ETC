@@ -12,7 +12,7 @@ public class Bot01{
 		System.out.println("Socket created");
 		PrintStream output = new PrintStream(connection.getOutputStream());
 		output.println("HELLO BAYKARP");
-		BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+		final BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		Thread t=new Thread(new Runnable(){
 			public void run()
 			{
