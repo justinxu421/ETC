@@ -5,10 +5,15 @@ import java.util.*;
 public class Bot01{
 	private static String host="10.0.187.59";
 	private static Socket connection;
-	private static int port=20001;
+	private static int port=20000;
+	private static int version = 0;
 	private static int id = 0;
 	public static void main(String[]args) throws Exception{
-		connection = new Socket(InetAddress.getByName(host), port);
+		if(args.length == 2)
+			host = "1.1.1.1";
+		if(args.length >= 1)
+			version = Integer.parseInt(args[1]);
+		connection = new Socket(InetAddress.getByName(host), port + version);
 		System.out.println("Socket created");
 		PrintStream output = new PrintStream(connection.getOutputStream());
 		output.println("HELLO BAYKARP");
