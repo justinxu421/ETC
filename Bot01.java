@@ -6,7 +6,7 @@ public class Bot01{
 	private static String host="10.0.187.59";
 	private static Socket connection;
 	private static int port=20001;
-
+	private static int id = 0;
 	public static void main(String[]args) throws Exception{
 		connection = new Socket(InetAddress.getByName(host), port);
 		System.out.println("Socket created");
@@ -14,6 +14,11 @@ public class Bot01{
 		output.println("HELLO BAYKARP");
 		BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		while(true)
-			System.out.println(input.readLine());
+		{
+			output.println("ADD " + id + " BOND BUY 999 1");
+			id++;
+			output.println("ADD " + id + " BOND SELL 1001 1");
+			id++;
+		}
 	}
 }	
