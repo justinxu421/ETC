@@ -8,6 +8,7 @@ public class Bot01{
 	private static int port=20000;
 	private static int version = 0;
 	private static int id = 0;
+	private static volatile int fillcount = 0;
 	public static void main(String[]args) throws Exception{
 		if(args.length == 2)
 			host = "1.1.1.1";
@@ -26,7 +27,13 @@ public class Bot01{
 						try {
 							String line = input.readLine();
 							if(line == null)
+							{
+								System.out.println("\n\n\n\n\n\n\n"+fillcount+"\n\n\n\n\n\n\n");
 								System.exit(0);
+							}
+							String[] info = line.split(" ");
+							if(info[0].equals("FILL"))
+								fillcount++;
 							System.out.println(line);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
