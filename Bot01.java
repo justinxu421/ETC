@@ -13,6 +13,21 @@ public class Bot01{
 		PrintStream output = new PrintStream(connection.getOutputStream());
 		output.println("HELLO BAYKARP");
 		BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+		Thread t=new Thread(new Runnable(){
+			public void run()
+			{
+				while(true)
+				{
+						try {
+							System.out.println(input.readLine());
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				}
+			}
+		});
+		t.start();
 		while(true)
 		{
 			output.println("ADD " + id + " BOND BUY 999 1");
