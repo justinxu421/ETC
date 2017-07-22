@@ -80,13 +80,13 @@ public class Bot04{
 								String[]buypair = info[3].split(":");
 								if(buypair.length == 2) {
 									int buyprice = Integer.parseInt(buypair[0]);
-									output.println("ADD " + id + " " + info[1] +" BUY " + (buyprice + 1) + " 1");
+									output.println("ADD " + id + " " + info[1] +" SELL " + (buyprice + 1) + " 1");
 									id++;
 									int sellIndex = findSell(info, 4);
 									if(info.length>sellIndex+1)
 									{
 										int sellprice = Integer.parseInt(info[sellIndex+1].split(":")[0]);
-										output.println("ADD " + id + " " + info[1] +" SELL " + (sellprice - 1) + " 1");
+										output.println("ADD " + id + " " + info[1] +" BUY " + (sellprice - 1) + " 1");
 										id++;
 									}
 								}
@@ -94,7 +94,7 @@ public class Bot04{
 									if(info.length > 4)
 									{
 										int sellprice = Integer.parseInt(info[4].split(":")[0]);
-										output.println("ADD " + id + " " + info[1] +" SELL " + (sellprice - 1) + " 1");
+										output.println("ADD " + id + " " + info[1] +" BUY " + (sellprice - 1) + " 1");
 										id++;
 									}
 								}
