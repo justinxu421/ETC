@@ -37,13 +37,13 @@ public class Bot03{
 							if(info[0].equals("FILL"))
 							{
 								fillcount++;
-								if(info[3] == "SELL") {
+								if(info[3].equals("SELL")) {
 									int profit = Integer.parseInt(info[4]) - 1000;
 									int count = Integer.parseInt(info[5]);
 									profits += profit*count;
 									System.out.println(profits);
 								}
-								else if(info[3] == "BUY") {
+								else if(info[3].equals("BUY")) {
 									int profit = 1000 - Integer.parseInt(info[4]);
 									int count = Integer.parseInt(info[5]);
 									profits += profit*count;
