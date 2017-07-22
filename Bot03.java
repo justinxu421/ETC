@@ -7,8 +7,9 @@ public class Bot03{
 	private static Socket connection;
 	private static int port=20000;
 	private static int version = 0;
-	private static int id = 0;
+	private static volatile int id = 0;
 	private static volatile int fillcount = 0;
+	private static int BOND_FAIR_PRICE = 1000;
 	public static void main(String[]args) throws Exception{
 		if(args.length == 2)
 			host = "1.1.1.1";
@@ -43,7 +44,22 @@ public class Bot03{
 									if(info[i].equals("SELL"))
 										selling = true;
 									else if (!selling){
-										
+										String[]pair = info[i].split(":");
+										int price = Integer.parseInt(pair[0]);
+										int count = Integer.parseInt(pair[1]);
+										if(price > BOND_FAIR_PRICE) {
+											output.println("ADD " + id + " BOND SELL " + price + " " + count);
+											id++;
+										}
+									}
+									else {
+										String[]pair = info[i].split(":");
+										int price = Integer.parseInt(pair[0]);
+										int count = Integer.parseInt(pair[1]);
+										if(price < BOND_FAIR_PRICE) {
+											output.println("ADD " + id + " BOND BUY " + price + " " + count);
+											id++;
+										}
 									}
 								}
 							}
@@ -59,11 +75,11 @@ public class Bot03{
 		while(true)
 		{
 			output.println("ADD " + id + " BOND BUY 998 1");
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			id++;
 			output.println("ADD " + id + " BOND SELL 1002 1");
 			id++;
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 		}
 	}
 }	
