@@ -14,8 +14,14 @@ public class Bot02{
 			host = "1.1.1.1";
 		if(args.length >= 1)
 			version = Integer.parseInt(args[1]);
-		while(true)
+		while(true) {
+			try{
 			connect();
+			} catch (Exception e)
+			{
+				System.out.println(e);
+			}
+		}
 	}
 	public static void connect() throws Exception{
 		connection = new Socket(InetAddress.getByName(host), port + version);
