@@ -24,7 +24,10 @@ public class Bot01{
 				while(true)
 				{
 						try {
-							System.out.println(input.readLine());
+							String line = input.readLine();
+							if(line == null)
+								System.exit(0);
+							System.out.println(line);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
