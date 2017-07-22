@@ -2,6 +2,8 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+import javafx.util.Pair;
+
 public class Bot04{
 	private static String host="10.0.187.59";
 	private static Socket connection;
@@ -11,6 +13,10 @@ public class Bot04{
 	private static volatile int fillcount = 0;
 	private static volatile int profits = 0;
 	private static int BOND_FAIR_PRICE = 1000;
+	private static int BEST_BID_NOKUS;
+	private static int BEST_OFFER_NOKUS;
+	private static int BEST_BID_NOKFH;
+	private static int BEST_OFFER_NOKFH;
 	public static void main(String[]args) throws Exception{
 		if(args.length == 2)
 			host = "1.1.1.1";
@@ -74,7 +80,13 @@ public class Bot04{
 											id++;
 										}
 									}
+									Pair<Integer, Integer> pair = new Pair<Integer, Integer>(0,0);
+									
 								}
+							}
+							else if (info[0].equals("BOOK") && (info[1].equals("NOKFH") || info[1].equals("NOKUS")))
+							{
+								
 							}
 							else if (info[0].equals("BOOK")) {
 								String[]buypair = info[3].split(":");
@@ -127,5 +139,11 @@ public class Bot04{
 				return i;
 		}
 		return 0;
+	}
+	
+	private static Pair<Integer, Integer> best (String[] info) {
+		Pair<Integer, Integer> best = new Pair<Integer, Integer>(0,0);
+		int sellIndex = findSell(info, 3)
+		return best;
 	}
 }	
