@@ -56,15 +56,15 @@ public class Bot_A{
 								}
 								System.out.println(line);
 							}
-							else if (info[0].equals("BOOK") && info[1].equals("GOOG") && googs_bought < 10) {
+							else if (info[0].equals("BOOK") && info[1].equals("GOOG") && googs_bought < 2) {
 									String[] yeah = info[3].split(":");	
-									output.println("ADD " + id + " GOOG BUY " + Integer.parseInt(yeah[0]) + " " + Integer.parseInt(yeah[1]));
+									output.println("ADD " + id + " GOOG BUY " + (Integer.parseInt(yeah[0]) + 1) + " " + Integer.parseInt(yeah[1]));
 									id++;							
 									googs_bought++;
 							}
-							else if (info[0].equals("BOOK") && info[1].equals("GOOG") && googs_bought >= 10) {
+							else if (info[0].equals("BOOK") && info[1].equals("GOOG") && googs_bought >= 2) {
 									String[] yeah = info[3].split(":");
-									output.println("ADD " + id + " GOOG SELL " + (Integer.parseInt(yeah[0]) + " " + Integer.parseInt(yeah[1])));
+									output.println("ADD " + id + " GOOG SELL " + (Integer.parseInt(yeah[0]) + 3) + " " + Integer.parseInt(yeah[1]));
 									id++; 
 									googs_bought--;
 							}

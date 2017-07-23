@@ -32,9 +32,11 @@ public class Bot01{
 								System.exit(0);
 							}
 							String[] info = line.split(" ");
-							if(info[0].equals("FILL"))
+							if(info[0].equals("FILL")){
 								fillcount++;
-								System.out.println(info);
+								System.out.println(fillcount);
+								System.out.println(line);
+							}
 							//System.out.println(line);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
