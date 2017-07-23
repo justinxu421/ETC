@@ -90,7 +90,7 @@ public class Bot04{
 									if(pair.getKey()!=0)
 										BEST_BID_NOKFH = pair.getKey();
 									if(pair.getValue()!=0)
-										BEST_BID_NOKFH = pair.getValue();
+										BEST_OFFER_NOKFH = pair.getValue();
 								}
 								else{
 									Pair pair = best(info);
@@ -98,7 +98,7 @@ public class Bot04{
 									if(pair.getKey()!=0)
 										BEST_BID_NOKUS = pair.getKey();
 									if(pair.getValue()!=0)
-										BEST_BID_NOKUS = pair.getValue();
+										BEST_OFFER_NOKUS = pair.getValue();
 								}
 								if(BEST_BID_NOKFH!=0&&BEST_OFFER_NOKFH!=0&&BEST_BID_NOKUS!=0&&BEST_OFFER_NOKUS!=0){
 									if(BEST_OFFER_NOKUS<BEST_BID_NOKFH){
