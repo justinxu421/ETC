@@ -79,16 +79,46 @@ public class Bot04{
 											output.println("ADD " + id + " BOND BUY " + price + " " + count);
 											id++;
 										}
-									}
-									Pair<Integer, Integer> pair = new Pair<Integer, Integer>(0,0);
-									
+									}									
 								}
 							}
 							else if (info[0].equals("BOOK") && (info[1].equals("NOKFH") || info[1].equals("NOKUS")))
 							{
-								
+								if(info[1].equals("NOKFH"))
+								{
+									Pair<Integer, Integer> pair = best(info);
+									if(pair.getKey()!=0)
+										BEST_BID_NOKFH = pair.getKey();
+									if(pair.getValue()!=0)
+										BEST_BID_NOKFH = pair.getValue();
+								}
+								else{
+									Pair<Integer, Integer> pair = best(info);
+									if(pair.getKey()!=0)
+										BEST_BID_NOKUS = pair.getKey();
+									if(pair.getValue()!=0)
+										BEST_BID_NOKUS = pair.getValue();
+								}
+								if(BEST_BID_NOKFH!=0&&BEST_OFFER_NOKFH!=0&&BEST_BID_NOKUS!=0&&BEST_OFFER_NOKUS!=0){
+									if(BEST_OFFER_NOKUS<BEST_BID_NOKFH){
+										output.println("ADD " + id + " NOKUS BUY " + BEST_OFFER_NOKUS + " 1");
+										id++;
+										output.println("CONVERT " + id + " NOKUS SELL 1");
+										id++;
+										output.println("ADD " + id + " NOKFH SELL " + BEST_BID_NOKFH + " 1");
+										id++;
+									}
+									if(BEST_OFFER_NOKFH<BEST_BID_NOKUS) {
+										output.println("ADD " + id + " NOKFH BUY " + BEST_OFFER_NOKFH + " 1");
+										id++;
+										output.println("CONVERT " + id + " NOKUS BUY 1");
+										id++;
+										output.println("ADD " + id + " NOKUS SELL " + BEST_BID_NOKUS + " 1");
+										id++;
+									}
+								}
 							}
-							else if (info[0].equals("BOOK")) {
+							else if (info[0].equals("BOOKS")) {
 								String[]buypair = info[3].split(":");
 								if(buypair.length == 2) {
 									int buyprice = Integer.parseInt(buypair[0]);
@@ -142,8 +172,17 @@ public class Bot04{
 	}
 	
 	private static Pair<Integer, Integer> best (String[] info) {
-		Pair<Integer, Integer> best = new Pair<Integer, Integer>(0,0);
-		int sellIndex = findSell(info, 3)
-		return best;
+		int sellIndex = findSell(info, 3);
+		if(sellIndex == 3 && info.length > 4)
+		{
+			return new Pair<Integer, Integer>(0, Integer.parseInt(info[4].split(":")[0]));
+		}
+		else if (sellIndex > 3 && info.length > sellIndex + 1){
+			return new Pair<Integer, Integer>(Integer.parseInt(info[3].split(":")[0]), Integer.parseInt(info[sellIndex+1].split(":")[0]));
+		}
+		else if (sellIndex>3 && info.length == sellIndex + 1){
+			return new Pair<Integer, Integer>(Integer.parseInt(info[3].split(":")[0]),0);
+		}
+		return new Pair<Integer,Integer>(0,0);
 	}
 }	
