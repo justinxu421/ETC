@@ -34,7 +34,8 @@ public class Bot01{
 							String[] info = line.split(" ");
 							if(info[0].equals("FILL"))
 								fillcount++;
-							System.out.println(line);
+								System.out.println(info);
+							//System.out.println(line);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
