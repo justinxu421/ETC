@@ -164,6 +164,7 @@ public class Bot04{
 			}
 		});
 		t.start();
+		/*
 		while(true)
 		{
 			output.println("ADD " + id + " BOND BUY 998 1");
@@ -173,6 +174,7 @@ public class Bot04{
 			id++;
 			Thread.sleep(2000);
 		}
+		*/
 	}
 	
 	private static int findSell(String[] info, int start){
