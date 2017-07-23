@@ -86,6 +86,7 @@ public class Bot04{
 								if(info[1].equals("NOKFH"))
 								{
 									Pair pair = best(info);
+									System.out.println(pair);
 									if(pair.getKey()!=0)
 										BEST_BID_NOKFH = pair.getKey();
 									if(pair.getValue()!=0)
@@ -93,6 +94,7 @@ public class Bot04{
 								}
 								else{
 									Pair pair = best(info);
+									System.out.println(pair);
 									if(pair.getKey()!=0)
 										BEST_BID_NOKUS = pair.getKey();
 									if(pair.getValue()!=0)
