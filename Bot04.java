@@ -120,12 +120,14 @@ public class Bot04{
 										id++;
 										output.println("ADD " + id + " NOKUS SELL " + ((BEST_BID_NOKFH+BEST_OFFER_NOKFH)/2) + " 1");
 										id++;
+										System.out.println("Justin");
 									}
 									if((BEST_BID_NOKFH+BEST_OFFER_NOKFH)<(BEST_BID_NOKUS+BEST_OFFER_NOKUS)){
 										output.println("ADD " + id + " NOKUS BUY " + ((BEST_BID_NOKFH+BEST_OFFER_NOKFH)/2) + " 1");
 										id++;
 										output.println("ADD " + id + " NOKFH SELL " + ((BEST_BID_NOKUS+BEST_OFFER_NOKUS)/2) + " 1");
 										id++;
+										System.out.println("Jonathan");
 									}
 								}
 							}
