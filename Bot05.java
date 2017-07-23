@@ -99,7 +99,7 @@ public class Bot05{
 										BEST_OFFER_NOKUS = pair.getValue();
 								}
 								if(BEST_BID_NOKFH!=0&&BEST_OFFER_NOKFH!=0&&BEST_BID_NOKUS!=0&&BEST_OFFER_NOKUS!=0){
-									/*
+									
 									if(BEST_OFFER_NOKUS<BEST_BID_NOKFH){
 										output.println("ADD " + id + " NOKUS BUY " + BEST_OFFER_NOKUS + " 1");
 										id++;
@@ -116,7 +116,8 @@ public class Bot05{
 										output.println("ADD " + id + " NOKUS SELL " + BEST_BID_NOKUS + " 1");
 										id++;
 									}
-									*/
+									
+									/*
 									if((BEST_BID_NOKFH+BEST_OFFER_NOKFH)>(BEST_BID_NOKUS+BEST_OFFER_NOKUS)){
 										output.println("ADD " + id + " NOKFH BUY " + ((BEST_BID_NOKUS+BEST_OFFER_NOKUS)/2) + " 1");
 										id++;
@@ -129,6 +130,7 @@ public class Bot05{
 										output.println("ADD " + id + " NOKFH SELL " + ((BEST_BID_NOKUS+BEST_OFFER_NOKUS)/2) + " 1");
 										id++;
 									}
+									*/
 								}
 							}
 							else if (info[0].equals("BOOKS")) {
