@@ -2,9 +2,8 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-import javafx.util.Pair;
-
 public class Bot04{
+
 	private static String host="10.0.187.59";
 	private static Socket connection;
 	private static int port=20000;
@@ -86,14 +85,14 @@ public class Bot04{
 							{
 								if(info[1].equals("NOKFH"))
 								{
-									Pair<Integer, Integer> pair = best(info);
+									Pair pair = best(info);
 									if(pair.getKey()!=0)
 										BEST_BID_NOKFH = pair.getKey();
 									if(pair.getValue()!=0)
 										BEST_BID_NOKFH = pair.getValue();
 								}
 								else{
-									Pair<Integer, Integer> pair = best(info);
+									Pair pair = best(info);
 									if(pair.getKey()!=0)
 										BEST_BID_NOKUS = pair.getKey();
 									if(pair.getValue()!=0)
@@ -171,18 +170,18 @@ public class Bot04{
 		return 0;
 	}
 	
-	private static Pair<Integer, Integer> best (String[] info) {
+	private static Pair best (String[] info) {
 		int sellIndex = findSell(info, 3);
 		if(sellIndex == 3 && info.length > 4)
 		{
-			return new Pair<Integer, Integer>(0, Integer.parseInt(info[4].split(":")[0]));
+			return new Pair(0, Integer.parseInt(info[4].split(":")[0]));
 		}
 		else if (sellIndex > 3 && info.length > sellIndex + 1){
-			return new Pair<Integer, Integer>(Integer.parseInt(info[3].split(":")[0]), Integer.parseInt(info[sellIndex+1].split(":")[0]));
+			return new Pair(Integer.parseInt(info[3].split(":")[0]), Integer.parseInt(info[sellIndex+1].split(":")[0]));
 		}
 		else if (sellIndex>3 && info.length == sellIndex + 1){
-			return new Pair<Integer, Integer>(Integer.parseInt(info[3].split(":")[0]),0);
+			return new Pair(Integer.parseInt(info[3].split(":")[0]),0);
 		}
-		return new Pair<Integer,Integer>(0,0);
+		return new Pair(0,0);
 	}
 }	
